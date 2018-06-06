@@ -30,4 +30,10 @@ module.exports = function(app) {
   app.route('/processes/kill')
   	.post(OSQuery.kill_process);
 
+  app.route('/packages/install')
+  	.get(OSQuery.install_package);
+
+  app.route('/packages/remove')
+  	.get(OSQuery.remove_package);
+
 };

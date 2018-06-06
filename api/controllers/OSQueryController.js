@@ -84,4 +84,22 @@ exports.kill_process = function(req, res) {
   });
 };
 
+exports.install_package = function(req, res) {
+  var new_user = req.params('name');
+  var final = 'apt-get install '.concat(new_user);
+  exec(final,function(err,stdout,stderr){
+  	console.log(new_user);
+  	res.json(stdout)
+  });
+};
+
+exports.remove_package = function(req, res) {
+  var new_user = req.params('name');
+  var final = 'apt-get remove '.concat(new_user);
+  exec(final,function(err,stdout,stderr){
+  	console.log(new_user);
+  	res.json(stdout)
+  });
+};
+
 
