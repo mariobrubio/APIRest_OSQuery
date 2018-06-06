@@ -1,6 +1,7 @@
 'use strict';
 var osquery = require('osquery');
 var os = osquery.createClient({ path: '/var/osquery/osquery.em' });
+var exec = require('child_process').exec;
 
 var mongoose = require('mongoose'),
   User = mongoose.model('Users');
@@ -20,7 +21,7 @@ exports.test = function(req,res1){
 };
 
 exports.Usuarios = function(req,res1){
-  os.query('SELECT * FROM logged_in_users;', function(err, res) {
+  os.query('SELECT * FROM users;', function(err, res) {
   	res1.json(res);
 });
 };
@@ -56,41 +57,31 @@ exports.Paquetes = function(req,res1){
 };
 
 exports.create_user = function(req, res) {
-  var new_user = new User(req.body);
-  new_user.save(function(err, user) {
-    if (err)
-      res.send(err);
-    res.json(user);
+  var new_user = req.params('user');
+  var final = 'useradd '.concat(new_user);
+  exec(final,function(err,stdout,stderr){
+  	console.log(new_user);
+  	res.json(stdout)
   });
 };
-
-
-exports.read_user = function(req, res) {
-  User.findById(req.params.userId, function(err, user) {
-    if (err)
-      res.send(err);
-    res.json(user);
-  });
-};
-
-
-exports.update_user = function(req, res) {
-  User.findOneAndUpdate({_id: req.params.userId}, req.body, {new: true}, function(err, user) {
-    if (err)
-      res.send(err);
-    res.json(user);
-  });
-};
-
 
 exports.delete_user = function(req, res) {
-
-
-  User.remove({
-    _id: req.params.userId
-  }, function(err, user) {
-    if (err)
-      res.send(err);
-    res.json({ message: 'User successfully deleted' });
+  var new_user = req.params('user');
+  var final = 'userdel '.concat(new_user);
+  exec(final,function(err,stdout,stderr){
+  	console.log(new_user);
+  	res.json(stdout)
   });
 };
+
+
+exports.kill_process = function(req, res) {
+  var new_user = req.params('pid');
+  var final = 'kill '.concat(new_user);
+  exec(final,function(err,stdout,stderr){
+  	console.log(new_user);
+  	res.json(stdout)
+  });
+};
+
+

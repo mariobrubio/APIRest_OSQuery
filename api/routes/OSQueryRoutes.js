@@ -9,15 +9,25 @@ module.exports = function(app) {
   app.route('/processes')
   	.get(OSQuery.Procesos);
 
-  app.route('/OsV')
+  app.route('/osv')
   	.get(OSQuery.OsVersion);
 
-  app.route('/KernelV')
+  app.route('/kernelv')
   	.get(OSQuery.KernelV);
 
-  app.route('/Mem')
+  app.route('/mem')
   	.get(OSQuery.Memoria);
 
-  app.route('/Packages')
+  app.route('/packages')
   	.get(OSQuery.Paquetes);
+
+  app.route('/users/create')
+  	.post(OSQuery.create_user);
+
+  app.route('/users/delete')
+  	.post(OSQuery.create_user);
+
+  app.route('/processes/kill')
+  	.post(OSQuery.kill_process);
+
 };
