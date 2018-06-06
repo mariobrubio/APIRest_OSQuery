@@ -1,0 +1,26 @@
+{
+  "name": "apirestosquery",
+  "version": "1.0.0",
+  "description": "Api Rest for OSQuery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mandresbr/APIRestOSQuery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mandresbr/APIRestOSQuery/issues"
+  },
+  "homepage": "https://github.com/mandresbr/APIRestOSQuery#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.1.4"
+  }
+}
