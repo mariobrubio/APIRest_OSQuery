@@ -13,9 +13,45 @@ exports.list_all_users = function(req, res) {
   });
 };
 
-exports.test = function(req,res){
+exports.test = function(req,res1){
   os.query('select timestamp from time', function(err, res) {
-  console.log(res);
+  	res1.json(res);
+});
+};
+
+exports.Usuarios = function(req,res1){
+  os.query('SELECT * FROM logged_in_users;', function(err, res) {
+  	res1.json(res);
+});
+};
+
+exports.Procesos = function(req,res1){
+  os.query('SELECT * from processes;', function(err, res) {
+  	res1.json(res);
+});
+};
+
+exports.OsVersion = function(req,res1){
+  os.query('SELECT * from os_version;', function(err, res) {
+  	res1.json(res);
+});
+};
+
+exports.KernelV = function(req,res1){
+  os.query('SELECT version from kernel_info;', function(err, res) {
+  	res1.json(res);
+});
+};
+
+exports.Memoria = function(req,res1){
+  os.query('SELECT memory_total from memory_info;', function(err, res) {
+  	res1.json(res);
+});
+};
+
+exports.Paquetes = function(req,res1){
+  os.query('SELECT * from deb_packages;', function(err, res) {
+  	res1.json(res);
 });
 };
 

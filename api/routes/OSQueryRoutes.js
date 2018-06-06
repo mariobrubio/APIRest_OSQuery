@@ -4,12 +4,20 @@ module.exports = function(app) {
 
   // OSQuery Routes
   app.route('/users')
-    .get(OSQuery.test)
-    .post(OSQuery.create_user);
+    .get(OSQuery.Usuarios);
 
+  app.route('/processes')
+  	.get(OSQuery.Procesos);
 
-  app.route('/users/:userId')
-    .get(OSQuery.read_user)
-    .put(OSQuery.update_user)
-    .delete(OSQuery.delete_user);
+  app.route('/OsV')
+  	.get(OSQuery.OsVersion);
+
+  app.route('/KernelV')
+  	.get(OSQuery.KernelV);
+
+  app.route('/Mem')
+  	.get(OSQuery.Memoria);
+
+  app.route('/Packages')
+  	.get(OSQuery.Paquetes);
 };
