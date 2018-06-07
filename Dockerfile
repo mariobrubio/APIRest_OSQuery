@@ -39,6 +39,8 @@ RUN npm install mongoose
 RUN npm install -g http --save
 COPY server.js /home/APIRestOSQuery/
 COPY /api/. /home/APIRestOSQuery/api
-CMD mongod
-
 EXPOSE 3000
+ENTRYPOINT /etc/init.d/osqueryd restart && mongod && /bin/bash
+
+
+
