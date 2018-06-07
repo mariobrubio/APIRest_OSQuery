@@ -57,47 +57,47 @@ exports.Paquetes = function(req,res1){
 };
 
 exports.create_user = function(req, res) {
-  var new_user = req.params('user');
+  var new_user = req.param('user');
   var final = 'useradd '.concat(new_user);
   exec(final,function(err,stdout,stderr){
-  	console.log(new_user);
+  	console.log(final);
   	res.json(stdout)
   });
 };
 
 exports.delete_user = function(req, res) {
-  var new_user = req.params('user');
+  var new_user = req.param('user');
   var final = 'userdel '.concat(new_user);
   exec(final,function(err,stdout,stderr){
-  	console.log(new_user);
+  	console.log(final);
   	res.json(stdout)
   });
 };
 
 
 exports.kill_process = function(req, res) {
-  var new_user = req.params('pid');
+  var new_user = req.param('pid');
   var final = 'kill '.concat(new_user);
   exec(final,function(err,stdout,stderr){
-  	console.log(new_user);
+  	console.log(final);
   	res.json(stdout)
   });
 };
 
 exports.install_package = function(req, res) {
-  var new_user = req.params('name');
+  var new_user = req.param('name');
   var final = 'apt-get install '.concat(new_user);
   exec(final,function(err,stdout,stderr){
-  	console.log(new_user);
+  	console.log(final);
   	res.json(stdout)
   });
 };
 
 exports.remove_package = function(req, res) {
-  var new_user = req.params('name');
-  var final = 'apt-get remove '.concat(new_user);
+  var new_user = req.param('name');
+  var final = 'apt-get remove -y '.concat(new_user);
   exec(final,function(err,stdout,stderr){
-  	console.log(new_user);
+  	console.log(final);
   	res.json(stdout)
   });
 };

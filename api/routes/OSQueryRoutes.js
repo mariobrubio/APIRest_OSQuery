@@ -25,15 +25,15 @@ module.exports = function(app) {
   	.post(OSQuery.create_user);
 
   app.route('/users/delete')
-  	.post(OSQuery.create_user);
+  	.post(OSQuery.delete_user);
 
   app.route('/processes/kill')
   	.post(OSQuery.kill_process);
 
   app.route('/packages/install')
-  	.get(OSQuery.install_package);
+  	.post(OSQuery.install_package);
 
   app.route('/packages/remove')
-  	.get(OSQuery.remove_package);
+  	.post(OSQuery.remove_package);
 
 };
